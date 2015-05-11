@@ -1,2 +1,2 @@
 # icecast2-bootstrap-theme
-Classy, bootstrap theme for icecast2.
+Bootstrap theme for Icecast2.
