@@ -29,39 +29,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Mountpoint <var><xsl:value-of select="@mount" /></var>
-                                <div class="pull-right">
-                                    <xsl:choose>
-                                        <xsl:when test="authenticator">
-                                            <a href="/auth.xsl" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-lock"></span>Login</a>
-                                        </xsl:when>
-                                        <xsl:otherwise>
-                                            <a href="{@mount}.m3u" class="btn btn-default btn-xs" role="button"><span class="glyphicon glyphicon-file"></span> M3U</a>
-                                            <a href="{@mount}.xspf" class="btn btn-default btn-xs" role="button"><span class="glyphicon glyphicon-file"></span>XSPF</a>
-                                            <a href="{@mount}.vclt" class="btn btn-default btn-xs" role="button"><span class="glyphicon glyphicon-file"></span> VCLT</a>
-                                        </xsl:otherwise>
-                                    </xsl:choose>
-                                </div>
                             </div>
                             <div class="panel-body">
-                                <xsl:choose>
-                                    <xsl:when test="authenticator">
-                                        <div class="center-block source-actions btn-toolbar" style="max-width: 807px">
-                                            <a href="listclients.xsl?mount={@mount}" class="btn btn-primary"><span class="glyphicon glyphicon-list"></span> List Clients</a>
-                                            <a href="moveclients.xsl?mount={@mount}" class="btn btn-warning"><span class="glyphicon glyphicon-transfer"></span> Move Listeners</a>
-                                            <a href="updatemetadata.xsl?mount={@mount}" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span> Update Metadata</a>
-                                            <a href="manageauth.xsl?mount={@mount}" class="btn btn-warning"><span class="glyphicon glyphicon-cog"></span> Manage Authentication</a>
-                                            <a href="killsource.xsl?mount={@mount}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Kill Source</a>
-                                        </div>
-                                    </xsl:when>
-                                    <xsl:otherwise>
-                                        <div class="center-block source-actions btn-toolbar" style="max-width: 594px">
-                                            <a href="listclients.xsl?mount={@mount}" class="btn btn-primary"><span class="glyphicon glyphicon-list"></span> List Clients</a>
-                                            <a href="moveclients.xsl?mount={@mount}" class="btn btn-warning"><span class="glyphicon glyphicon-transfer"></span> Move Listeners</a>
-                                            <a href="updatemetadata.xsl?mount={@mount}" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span> Update Metadata</a>
-                                            <a href="killsource.xsl?mount={@mount}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Kill Source</a>
-                                        </div>
-                                    </xsl:otherwise>
-                                </xsl:choose>
                                 <xsl:choose>
                                     <xsl:when test="listener">
                                         <table class="table table-stripped">

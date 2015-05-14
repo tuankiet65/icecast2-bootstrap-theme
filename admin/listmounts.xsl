@@ -32,12 +32,12 @@
                                 <div class="pull-right">
                                     <xsl:choose>
                                         <xsl:when test="authenticator">
-                                            <a href="/auth.xsl" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-lock"></span> Login</a>
+                                            <button class="btn btn-danger btn-xs" data-mountpoint="{@mount}" data-toggle="modal" data-target="#authModal"><span class="glyphicon glyphicon-lock"></span> Login</button>
                                         </xsl:when>
                                         <xsl:otherwise>
                                             <a href="{@mount}.m3u" class="btn btn-default btn-xs" role="button"><span class="glyphicon glyphicon-file"></span> M3U</a>
-                                            <a href="{@mount}.xspf" class="btn btn-default btn-xs" role="button"><span class="glyphicon glyphicon-file"></span> XSPF</a>
-                                            <a href="{@mount}.vclt" class="btn btn-default btn-xs" role="button"><span class="glyphicon glyphicon-file"></span> VLCT</a>
+                                            <a href="{@mount}.xspf" class="btn btn-default btn-xs" role="button"><span class="glyphicon glyphicon-file"></span> <abbr title="XML Shareable Playlist Format">XSPF</abbr></a>
+                                            <a href="{@mount}.vclt" class="btn btn-default btn-xs" role="button"><span class="glyphicon glyphicon-file"></span> <abbr title="Vorbis Comment Like Text">VCLT</abbr></a>
                                         </xsl:otherwise>
                                     </xsl:choose>
                                 </div>
@@ -76,10 +76,37 @@
                             </div>
                         </div>
                     </xsl:for-each>
+                    <div class="modal fade" id="authModal" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><xsl:text disable-output-escaping="yes">&amp;times;</xsl:text></span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Login for mountpoint <code class="auth-mountpoint-name"></code></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="GET" action="/admin/buildm3u" class="form-inline" role="form">
+                                            <input type="hidden" name="mount" class="auth-mountpoint-name" value="" />
+                                            <div class="form-group">
+                                                <label class="sr-only" for="username">Username</label>
+                                                <input type="text" name="username" id="username" placeholder="Username" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="password">Password</label>
+                                                <input type="password" name="password" placeholder="Password" class="form-control" />
+                                            </div>
+                                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-lock"></span> Login</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="footer">
                         Support Icecast development at <a href="http://www.icecast.org">www.icecast.org</a>
                     </div>
                 </div>
+                <script src="/assets/js/jquery.min.js" />
+                <script src="/assets/js/bootstrap.min.js" />
+                <script src="/assets/js/common.js" />
             </body>
         </html>
     </xsl:template>
